@@ -1,7 +1,7 @@
 {
   "name": "react-countapp",
   "version": "0.1.0",
-  "homepage": "https://kalz2q/github.io/react-countapp/",
+  "homepage": "https://kalz2q.github.io/react-countapp/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
