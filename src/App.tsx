@@ -12,13 +12,23 @@ const App = () => {
     onClick: () => void;
   };
 
-  const Button = (props: ButtonProps) => {
-    switch (props.value) {
+  const handleClick = (s: Msg) => {
+    switch (s) {
       case "Increment":
         setCount((prevCount) => prevCount + 1);
-        return <button onClick={props.onClick}>{"+"}</button>;
+        return onclick;
       case "Decrement":
         setCount((prevCount) => prevCount - 1);
+        return onclick;
+    }
+  };
+
+  const Button = (props: ButtonProps) => {
+    // handleClick(props.value);
+    switch (props.value) {
+      case "Increment":
+        return <button onClick={props.onClick}>{"+"}</button>;
+      case "Decrement":
         return <button onClick={props.onClick}>{"-"}</button>;
     }
   };
