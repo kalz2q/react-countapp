@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 const App = () => {
   useEffect(() => {
     document.title = "react-countapp";
@@ -8,45 +7,32 @@ const App = () => {
 
   const [count, setCount] = useState(0);
   type Msg = "Increment" | "Decrement";
-  type BButtonProps = {
+  type ButtonProps = {
     value: Msg;
+    onClick: () => void;
   };
-  const BButton = (props: BButtonProps) => {
+
+  const Button = (props: ButtonProps) => {
     switch (props.value) {
       case "Increment":
         setCount((prevCount) => prevCount + 1);
-        return <button onClick={onclick}>"+"</button>;
-        break;
+        return <button onClick={props.onClick}>{"+"}</button>;
       case "Decrement":
         setCount((prevCount) => prevCount - 1);
-        return  <button onClick={onclick}>"-"</button>;
-        break;
-      default: 
-        return <button onClick={onclick}>"*****"</button>;
+        return <button onClick={props.onClick}>{"-"}</button>;
     }
   };
 
-
-  // const onIncrement = () => {
-  //   setCount((prevCount) => prevCount + 1);
-  // };
-
-  // const onDecrement = () => {
-  //   setCount((prevCount) => prevCount - 1);
-  // };
+  const renderButton = (s: Msg) => {
+    return <Button value={s} onClick={() => onclick} />;
+  };
 
   return (
     <div>
       <div>{count}</div>
       <div>
-        {/* <button type="button" onClick={onIncrement}>
-          +
-        </button>
-        <button type="button" onClick={onDecrement}>
-          -
-        </button> */}
-        <BButton value="Increment" />
-        <BButton value="Decrement"  />
+        {renderButton("Increment")}
+        {renderButton("Decrement")}
       </div>
     </div>
   );
